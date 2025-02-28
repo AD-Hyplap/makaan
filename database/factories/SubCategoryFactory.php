@@ -3,7 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Str;
+use App\Models\SubCategory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SubCategory>
  */
@@ -16,8 +17,21 @@ class SubCategoryFactory extends Factory
      */
     public function definition(): array
     {
+        do {
+            $name = fake()->unique()->word();
+            $slug = Str::slug($name);
+
+            // Check if the slug already exists in the database
+            $exists = SubCategory::where('slug', $slug)->exists();
+            if ($exists) {
+                $slug .= '-' . Str::random(5); // Append random string if duplicate
+            }
+        } while ($exists); // Repeat until we get a unique slug
+
         return [
-            //
+            'name'=> $this->faker->word(),
+            'image'=>"https://www.shutterstock.com/shutterstock/photos/1551008000/display_1500/stock-photo-rack-with-bright-clothes-on-light-background-rainbow-colors-1551008000.jpg",
+            'slug' => $slug,
         ];
     }
 }

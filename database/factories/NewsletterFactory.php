@@ -17,7 +17,7 @@ class NewsletterFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'email'=> $this->faker->email(),
         ];
     }
 }
