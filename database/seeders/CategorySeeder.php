@@ -33,23 +33,23 @@ class CategorySeeder extends Seeder
             ]);
 
             // Create random products for each property subcategory
-            Product::factory()->count(5)->create([
+            Product::factory()->count(random_int(4, 10))->create([
                 'category_id' => $propertyCategory->id,
                 'subcategory_id' => $subCategory->id,
             ]);
         }
 
         // Generate other random categories
-        $randomCategories = Category::factory()->count(9)->create();
+        $randomCategories = Category::factory()->count(1)->create();
 
         foreach ($randomCategories as $category) {
-            $subCategories = SubCategory::factory()->count(5)->create([
+            $subCategories = SubCategory::factory()->count(random_int(4, 10))->create([
                 'category_id' => $category->id,
             ]);
 
             // Generate random products for each subcategory
             foreach ($subCategories as $subCategory) {
-                Product::factory()->count(3)->create([
+                Product::factory()->count(random_int(4, 10))->create([
                     'category_id' => $category->id,
                     'subcategory_id' => $subCategory->id,
                 ]);
