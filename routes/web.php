@@ -5,10 +5,11 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SubCategoryController;
-use App\Models\Agent;
 
-Route::view('/', 'index', ['agents'=>Agent::inRandomOrder()->limit(4)->get()] )->name('home');
+Route::get('/',[HomeController::class, 'home'])->name('home');
+
 Route::view('/contact', 'contact')->name('contacts');
 Route::view('/about', 'about')->name('about');
 Route::get('/{category}/{subCategory}', [SubCategoryController::class, 'getSubCategory']);
