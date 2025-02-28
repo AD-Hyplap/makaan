@@ -12,6 +12,7 @@ Route::get('/',[HomeController::class, 'home'])->name('home');
 
 Route::view('/contact', 'contact')->name('contacts');
 Route::view('/about', 'about')->name('about');
+
 Route::get('/{category}/{subCategory}', [SubCategoryController::class, 'getSubCategory']);
 
 Route::redirect('/login', '/');

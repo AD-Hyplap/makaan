@@ -1,5 +1,7 @@
 <x-layouts.app>
+
     <div>{{$subCategory->name}}</div>
-    <div>{{$category->name}}</div>
-    <x-contact contactImage='{{$subCategory->image}}'></x-contact>
+    <div>{{$category}}</div>
+    <x-contact contactImg='{{$subCategory->image}}'></x-contact>
+
 </x-layouts.app>

@@ -6,15 +6,16 @@ use App\Models\SubCategory;
 
 class SubCategoryController extends Controller
 {
-    public function getSubCategory(string $subCategory, string $category)
+    public function getSubCategory(string $category, string $subCategory)
     {
-
         $subCategory = SubCategory::
-            join('categories', 'sub_categories.category_id', '=', 'categories.id')
+            select('sub_categories.name as name', 'sub_categories.slug as slug')
+            ->join('categories', 'sub_categories.category_id', '=', 'categories.id')
             ->where([
-                ['slug', '=', $subCategory], ['categories.slug', '=', $category]
-            ])->first();
+                ['sub_categories.slug', '=', $subCategory], ['categories.slug', '=', $category]
+            ])
+            ->first();
 
-        return view('sub-category', ['subCategory'=>$subCategory, 'category'=>$subCategory->category]);
+        return view('sub-category', ['subCategory'=>$subCategory, 'category'=>$category]);
     }
 }
