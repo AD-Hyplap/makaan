@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AgentFactory extends Factory
 {
+
+    private int $index = -1;
+
     /**
      * Define the model's default state.
      *
@@ -16,10 +19,12 @@ class AgentFactory extends Factory
      */
     public function definition(): array
     {
+        $this->index++;
         return [
-            'name'=> $this->faker->name(),
-            'image'=>"https://www.shutterstock.com/shutterstock/photos/1551008000/display_1500/stock-photo-rack-with-bright-clothes-on-light-background-rainbow-colors-1551008000.jpg",
-            'description'=>$this->faker->paragraph(3),
+            'name'=> fake()->name(),
+            'image'=>["img/team-1.jpg", "img/team-2.jpg", "img/team-3.jpg", "img/team-4.jpg"][$this->index%4],
+            'designation'=>fake()->word(),
+            'description'=>fake()->paragraph(3),
         ];
     }
 }

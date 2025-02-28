@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\SubCategory;
 
 class SubCategoryController extends Controller
 {
-    public function index()
+    public function getSubCategory(string $subCategory, string $category)
     {
-        $subCategories = SubCategory::with('cateory')->get();
-        return view('submenu', compact('subCategories'));
+
+        $subCategory = SubCategory::
+            join('categories', 'sub_categories.category_id', '=', 'categories.id')
+            ->where([
+                ['slug', '=', $subCategory], ['categories.slug', '=', $category]
+            ])->first();
+
+        return view('sub-category', ['subCategory'=>$subCategory, 'category'=>$subCategory->category]);
     }
 }

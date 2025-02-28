@@ -25,7 +25,7 @@ class AuthController extends Controller
             return redirect("/login");
         }
 
-        return redirect(route('home'))->cookie('token', $token, 5, "/", null, false, true);
+        return redirect(route('home'))->cookie('token', $token, env('JWT_TTL', 5), "/", null, false, true);
     }
 
     /**
@@ -49,7 +49,7 @@ class AuthController extends Controller
 
         $token = Auth::login($user);
 
-        return redirect(route('home'))->cookie('token', $token, 5, "/", null, false, true);
+        return redirect(route('home'))->cookie('token', $token, env('JWT_TTL', 5), "/", null, false, true);
     }
 
     /**
@@ -61,6 +61,11 @@ class AuthController extends Controller
         auth()->logout();
 
         return redirect(route('login'));
+    }
+
+    public function profile()
+    {
+        return view('profile');
     }
 
 }

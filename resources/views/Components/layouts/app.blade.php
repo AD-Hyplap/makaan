@@ -52,9 +52,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
+                    <div class="navbar-nav ms-auto align-items-center">
                         <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
                         <a href="{{route('about')}}" class="nav-item nav-link">About</a>
+                        <a href="{{route('contacts')}}" class="nav-item nav-link">Contact</a>
 
                         <div class="nav-item dropdown">
                             <a href="/#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
@@ -73,18 +74,26 @@
                         <!--    </div>-->
                         <!--</div>-->
 
-                        <a href="{{route('contacts')}}" class="nav-item nav-link">Contact</a>
+
+                        @guest
+                        <button type="button" class="btn btn-primary px-3 d-none d-lg-block me-2" data-bs-toggle="modal" data-bs-target="#signup-modal">Signup</button>
+                        <button type="button" class="btn btn-primary px-3 d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
+                        @endguest
+
+                        @auth
+                        <div class="nav-item dropdown">
+
+                            <a href="#" class="nav-link dropdown-toggle pointer" data-bs-toggle="dropdown">{{Auth::user()->username}}</a>
+
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="{{route('profile')}}" class="dropdown-item">Profile</a>
+                                <a href="{{route('logout')}}" class="dropdown-item">Logout</a>
+                            </div>
+
+                        </div>
+                        @endauth
                     </div>
 
-                    @guest
-                    <button type="button" class="btn btn-primary px-3 d-none d-lg-flex me-2" data-bs-toggle="modal" data-bs-target="#signup-modal">Signup</button>
-                    <button type="button" class="btn btn-primary px-3 d-none d-lg-flex" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
-                    @endguest
-                    @auth
-                    <div class="nav-item dropdown">
-                        {{Auth::user()->username}}
-                    </div>
-                    @endauth
                 </div>
             </nav>
         </div>
@@ -258,6 +267,7 @@
     <script src="/lib/easing/easing.min.js"></script>
     <script src="/lib/waypoints/waypoints.min.js"></script>
     <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
