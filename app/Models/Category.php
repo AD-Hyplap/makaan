@@ -16,8 +16,13 @@ class Category extends Model
         'image',
     ];
 
-    public function subCategories()
+    public function subcategory()
     {
         return $this->hasMany(SubCategory::class);
+    }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 }

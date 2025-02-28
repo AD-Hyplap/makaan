@@ -4,11 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Category;
-use App\Models\SubCategory;
-use App\Models\Product;
 
-class CategorySeeder extends Seeder
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,23 +16,23 @@ class CategorySeeder extends Seeder
         $propertyCategory = Category::create([
             'name' => 'Property',
             'slug' => 'property',
-            'image' => 'property.jpg',
+            'image' => 'property.jpg', // Change as needed
         ]);
 
+        // Define the subcategories for "Property"
         $propertySubCategories = ['Appartment', 'Villa', 'Home', 'Office', 'Building', 'Townhouse', 'Shop', 'Garage'];
 
         foreach ($propertySubCategories as $subCategoryName) {
             $subCategory = SubCategory::create([
                 'name' => $subCategoryName,
                 'slug' => strtolower($subCategoryName),
-                'image' => 'https://www.shutterstock.com/shutterstock/photos/1551008000/display_1500/stock-photo-rack-with-bright-clothes-on-light-background-rainbow-colors-1551008000.jpg',
                 'category_id' => $propertyCategory->id,
             ]);
 
             // Create random products for each property subcategory
             Product::factory()->count(5)->create([
                 'category_id' => $propertyCategory->id,
-                'subcategory_id' => $subCategory->id,
+                'sub_category_id' => $subCategory->id,
             ]);
         }
 
@@ -51,7 +48,7 @@ class CategorySeeder extends Seeder
             foreach ($subCategories as $subCategory) {
                 Product::factory()->count(3)->create([
                     'category_id' => $category->id,
-                    'subcategory_id' => $subCategory->id,
+                    'sub_category_id' => $subCategory->id,
                 ]);
             }
         }
