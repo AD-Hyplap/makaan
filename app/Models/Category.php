@@ -15,4 +15,9 @@ class Category extends Model
         'slug',
         'image',
     ];
+
+    public function subCategories()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
 }

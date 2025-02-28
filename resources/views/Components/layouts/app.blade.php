@@ -42,7 +42,7 @@
         <!-- Navbar Start -->
         <div class="container-fluid nav-bar bg-transparent">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
-                <a href="/index" class="navbar-brand d-flex align-items-center text-center">
+                <a href="{{route('home')}}" class="navbar-brand d-flex align-items-center text-center">
                     <div class="icon p-2 me-2">
                         <img class="img-fluid" src="img/icon-deal.png" alt="Icon" style="width: 30px; height: 30px;">
                     </div>
@@ -53,8 +53,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="/index" class="nav-item nav-link active">Home</a>
-                        <a href="/about" class="nav-item nav-link">About</a>
+                        <a href="{{route('home')}}" class="nav-item nav-link active">Home</a>
+                        <a href="{{route('about')}}" class="nav-item nav-link">About</a>
 
                         <div class="nav-item dropdown">
                             <a href="/#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
@@ -73,7 +73,7 @@
                         <!--    </div>-->
                         <!--</div>-->
 
-                        <a href="/contact" class="nav-item nav-link">Contact</a>
+                        <a href="{{route('contacts')}}" class="nav-item nav-link">Contact</a>
                     </div>
 
                     @guest
@@ -81,9 +81,9 @@
                     <button type="button" class="btn btn-primary px-3 d-none d-lg-flex" data-bs-toggle="modal" data-bs-target="#login-modal">Login</button>
                     @endguest
                     @auth
-                        <div class="nav-item dropdown">
-                            {{Auth::user()->username}}
-                        </div>
+                    <div class="nav-item dropdown">
+                        {{Auth::user()->username}}
+                    </div>
                     @endauth
                 </div>
             </nav>
@@ -143,10 +143,13 @@
                         <h5 class="text-white mb-4">Newsletter</h5>
                         <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Your email">
-                            <button type="button"
-                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            <form action="{{ route('newsletter.subscribe') }}" method="POST">
+                                @csrf
+                                <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="email" name="email"
+                                    placeholder="Your email">
+                                <button type="submit"
+                                    class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -191,15 +194,15 @@
                 </div>
 
                 <div class="modal-body">
-                        <div class="form-floating mb-3">
-                          <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
-                          <label for="email">Email address</label>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+                        <label for="email">Email address</label>
+                    </div>
 
-                        <div class="form-floating mb-3">
-                          <input type="password" name="password" class="form-control" id="password" placeholder="name@example.com">
-                          <label for="password">Password</label>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="name@example.com">
+                        <label for="password">Password</label>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -220,25 +223,25 @@
                 </div>
 
                 <div class="modal-body">
-                        <div class="form-floating mb-3">
-                          <input type="text" name="username" class="form-control" id="username" placeholder="johndoe">
-                          <label for="username">Username</label>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="username" class="form-control" id="username" placeholder="johndoe">
+                        <label for="username">Username</label>
+                    </div>
 
-                        <div class="form-floating mb-3">
-                          <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
-                          <label for="email">Email address</label>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+                        <label for="email">Email address</label>
+                    </div>
 
-                        <div class="form-floating mb-3">
-                          <input type="password" name="password" class="form-control" id="password">
-                          <label for="password">Password</label>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password" class="form-control" id="password">
+                        <label for="password">Password</label>
+                    </div>
 
-                        <div class="form-floating mb-3">
-                          <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" >
-                          <label for="password_confirmation">Confirm Password</label>
-                        </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation">
+                        <label for="password_confirmation">Confirm Password</label>
+                    </div>
                 </div>
 
                 <div class="modal-footer">

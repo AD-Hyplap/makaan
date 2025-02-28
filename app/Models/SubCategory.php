@@ -16,4 +16,9 @@ class SubCategory extends Model
         'slug',
         'image',
     ];
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
