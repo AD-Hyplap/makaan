@@ -1,7 +1,10 @@
 <x-layouts.app>
 
-    <div>{{$subCategory->name}}</div>
-    <div>{{$category}}</div>
-    <x-contact contactImg='{{$subCategory->image}}'></x-contact>
+    <div class="container row mx-auto my-4">
+        <div>{{$subCategory->name}}</div>
+        <div>{{$category}}</div>
+    </div>
+
+    <x-contact :contact-img="$subCategory->image" ></x-contact>
 
 </x-layouts.app>

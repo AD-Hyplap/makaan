@@ -25,8 +25,7 @@
                                         <i class="fa fa-envelope-open text-primary"></i>
                                     </div>
                                     <span>info@example.com</span>
-                                </div>
-                            </div>
+                                </div> </div>
                         </div>
                         <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                             <div class="bg-light rounded p-3">
@@ -40,6 +39,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <img class="position-relative rounded w-100 h-100"
                         src="{{$contactImg}}"
@@ -47,6 +47,7 @@
                         style="min-height: 400px; border:0;" allowfullscreen="" aria-hidden="false"
                     />
                 </div>
+
                 <div class="col-md-6">
                     <div class="wow fadeInUp" data-wow-delay="0.5s">
                         <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>

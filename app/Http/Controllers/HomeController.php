@@ -15,7 +15,7 @@ class HomeController extends Controller
         $subCategories = SubCategory::select('sub_categories.name as name', DB::raw('count(products.id) as property_count'), 'sub_categories.slug as slug')
             ->join('categories', 'categories.id', '=', 'sub_categories.category_id')
             ->join('products', 'sub_categories.id', '=', 'products.subcategory_id')
-            ->groupBy('sub_categories.name','sub_categories.id')
+            ->groupBy('sub_categories.name','sub_categories.id', 'sub_categories.slug')
             ->where('categories.name', $category)
             ->get();
 
