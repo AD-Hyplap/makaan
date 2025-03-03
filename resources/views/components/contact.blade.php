@@ -51,8 +51,7 @@
                 <div class="col-md-6">
                     <div class="wow fadeInUp" data-wow-delay="0.5s">
                         <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                        <form action="{{ route('contact.submit') }}" method="POST">
-                            @csrf
+                        <form hx-post="{{route('contact.submit')}}" hx-headers='{"X-CSRF-TOKEN":"{{csrf_token()}}"}' hx-swap="none" id="contact-form">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
@@ -89,3 +88,12 @@
         </div>
     </div>
     <!-- Contact End -->
+
+    <script>
+    document.body.addEventListener('htmx:afterSettle', function (e){
+        if(e.detail.elt.id === "contact-form"){
+            e.detail.elt.reset();
+            alert("your message has been submitted we will get back to you soon");
+        }
+    })
+    </script>
