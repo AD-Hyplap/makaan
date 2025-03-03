@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agent;
+use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Testimony;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,8 @@ class HomeController extends Controller
 
         $testimonies = Testimony::limit(5)->get();
 
-        return view('index', compact('agents', 'subCategories', 'category', 'testimonies'));
+        $properties = Product::limit(6)->get();
+
+        return view('index', compact('agents', 'subCategories', 'category', 'testimonies', 'properties'));
     }
 }
