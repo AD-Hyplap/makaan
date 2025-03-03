@@ -150,6 +150,7 @@
     document.body.addEventListener('htmx:afterSettle', function (e){
         if(e.detail.elt.id === "contact-form"){
             e.detail.elt.reset();
+            alert("your message has been submitted we will get back to you soon");
         }
     })
     </script>

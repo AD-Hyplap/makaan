@@ -19,7 +19,7 @@ class TestimonyFactory extends Factory
         return [
             'name'=> $this->faker->name(),
             'image'=>"https://www.shutterstock.com/shutterstock/photos/1551008000/display_1500/stock-photo-rack-with-bright-clothes-on-light-background-rainbow-colors-1551008000.jpg",
-            'content'=>$this->faker->paragraph(3),
+            'content'=>$this->faker->paragraph(1),
         ];
     }
 }
