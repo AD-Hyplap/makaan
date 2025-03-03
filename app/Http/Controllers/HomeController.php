@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\SubCategory;
+use App\Models\Testimony;
 
 class HomeController extends Controller
 {
@@ -14,4 +15,10 @@ class HomeController extends Controller
 
         return view('index', compact('agents', 'subCategories', 'category'));
     }
+    
+    // public function testimony()
+    // {
+    //     $testimonies = Testimony::latest()->get();
+    //     return view('index', compact('testimonies'));
+    // }
 }

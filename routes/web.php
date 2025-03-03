@@ -27,3 +27,5 @@ Route::post('/contact', [ContactController::class, 'submit'])->name('contact.sub
 Route::middleware('auth')->group(function(){
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 });
+
+// Route::get('/index', [HomeController::class, 'testimony'])->name('testimonies');
