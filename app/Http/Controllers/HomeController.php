@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\SubCategory;
+use App\Models\Testimony;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -19,11 +20,9 @@ class HomeController extends Controller
             ->where('categories.name', $category)
             ->get();
 
-        foreach($subCategories as $subCategory){
-            logger($subCategory->slug);
-        }
+        $testimonies = Testimony::limit(5)->get();
 
-        return view('index', compact('agents', 'subCategories', 'category'));
+        return view('index', compact('agents', 'subCategories', 'category', 'testimonies'));
     }
     
 }
